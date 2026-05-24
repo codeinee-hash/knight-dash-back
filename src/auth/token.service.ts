@@ -49,7 +49,7 @@ export class TokensService {
     const cookieOptions: CookieOptions = {
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      sameSite: "none",
     };
 
     res.clearCookie(TokenType.REFRESH, cookieOptions);
