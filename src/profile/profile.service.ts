@@ -106,9 +106,8 @@ export class ProfileService {
     });
 
     this.tokensService.setRefreshTokenCookie(res, TokenType.REFRESH, refreshToken);
-    this.tokensService.setRefreshTokenCookie(res, TokenType.ACCESS, accessToken);
 
-    return player;
+    return { ...player, accessToken };
   }
 
   async updateAvatar(userId: string, file: Express.Multer.File, res: Response) {
@@ -126,8 +125,7 @@ export class ProfileService {
     });
 
     this.tokensService.setRefreshTokenCookie(res, TokenType.REFRESH, refreshToken);
-    this.tokensService.setRefreshTokenCookie(res, TokenType.ACCESS, accessToken);
 
-    return player;
+    return { ...player, accessToken };
   }
 }

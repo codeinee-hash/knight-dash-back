@@ -28,15 +28,10 @@ export class AuthService {
       TokenType.REFRESH,
       refreshToken,
     );
-    this.tokensService.setRefreshTokenCookie(
-      res,
-      TokenType.ACCESS,
-      accessToken,
-    );
-
     return {
       status: "success",
       message: "Успешный вход",
+      accessToken,
     };
   }
 
@@ -74,11 +69,6 @@ export class AuthService {
       TokenType.REFRESH,
       refreshToken,
     );
-    this.tokensService.setRefreshTokenCookie(
-      res,
-      TokenType.ACCESS,
-      accessToken,
-    );
 
     try {
       // const bitrixRes$ = this.httpService.post(
@@ -102,12 +92,14 @@ export class AuthService {
       return {
         status: "success",
         message: "Пользователь успешно зарегистрирован",
+        accessToken,
         // bitrixData,
       };
     } catch (error) {
       return {
         status: "success",
         message: "Пользователь успешно зарегистрирован (Bitrix API error)",
+        accessToken,
       };
     }
   }
@@ -146,15 +138,10 @@ export class AuthService {
       TokenType.REFRESH,
       refreshToken,
     );
-    this.tokensService.setRefreshTokenCookie(
-      res,
-      TokenType.ACCESS,
-      accessToken,
-    );
-
     return {
       status: "success",
       message: "Токен обновлен",
+      accessToken,
     };
   }
 
