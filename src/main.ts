@@ -14,7 +14,8 @@ async function run() {
     origin: [
       process.env.CLIENT_PROD_URL as string,
       process.env.CLIENT_STAGING_URL as string,
-      process.env.CLIENT_DEV_URL as string
+      process.env.CLIENT_DEV_URL as string,
+      "http://172.20.10.2:3000",
     ],
     credentials: true,
     exposedHeaders: "set-cookie",
@@ -22,7 +23,7 @@ async function run() {
 
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe());
-  
+
   app.useStaticAssets(join(process.cwd(), "uploads"), { prefix: "/uploads" });
 
   const config = new DocumentBuilder()

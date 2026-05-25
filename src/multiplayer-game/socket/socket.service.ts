@@ -374,10 +374,8 @@ export class MultiplayerSocketService
 
       const result = engine.movePlayer(user._id, toX, toY);
       if (!result) {
-        return client.emit("server-error", {
-          message: "Невалидный ход",
-          status: 400,
-        });
+        // Silently ignore invalid moves (e.g. race conditions) instead of crashing the game
+        return;
       }
 
       // Рассылаем обновленный стейт ОБОИМ игрокам
